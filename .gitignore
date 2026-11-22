@@ -1,0 +1,20 @@
+# Build output
+/target
+ui/dist
+ui/node_modules
+
+# Secrets and local machine files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# Editors and OS
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+*.log

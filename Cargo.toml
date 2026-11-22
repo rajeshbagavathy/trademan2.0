@@ -1,0 +1,13 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/core",
+    "crates/broker-api",
+    "crates/strategy",
+    "crates/engine",
+    "crates/adapter-paper",
+    "crates/adapter-sim",
+    "crates/adapter-firstock",
+    "crates/adapter-xts",
+    "crates/api",
+]

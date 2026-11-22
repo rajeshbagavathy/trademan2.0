@@ -1,0 +1,10 @@
+[package]
+name = "adapter-xts"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+broker-api = { path = "../broker-api" }
+tradecore = { path = "../core" }
+serde_json = "1"
