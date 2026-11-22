@@ -1,0 +1,18 @@
+---
+description: Tradman product decisions and crate boundaries
+alwaysApply: true
+---
+
+# Tradman
+
+Read `docs/DESIGN.md` before changing the engine, adapters, strategy rules, or the page. Extend the decisions there. Do not reopen them unless the user asks.
+
+- Paper only. No live orders, no broker secrets, no credentials in the repo.
+- Prices are integer paise (`PriceTicks`). Quantities are units. Adapters own lot size.
+- `tradecore` lives in `crates/core`. Adapters must not depend on `strategy` or `engine`.
+- Journal an intent before send. Multi-leg entry is all-or-nothing: flatten the book on reject, partial, timeout, or a failed protective stop.
+- Closed-leg P&L uses the exit fill, not the stop trigger. Leg trail and leg stop modify the broker stop.
+- Strike choice is ATM, ITM, or OTM, one step. Leg trail is points. Leg momentum is premium percent. Re-entry stays removed.
+- UI has no left rail and no raw order button. API is `127.0.0.1:8090`. The page is `127.0.0.1:5173`.
+- Test first. Then `cargo fmt --all`, `cargo test --workspace`, and `cargo clippy --workspace --all-targets -- -D warnings`. Do not weaken tests.
+- Do not rebuild the seeded Nifty book from its definition. Its combined P&L stays 121225 ticks.

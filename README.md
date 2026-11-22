@@ -2,6 +2,8 @@
 
 Paper multi-leg options desk. A Rust engine places and tracks paper orders. A React page is the monitor: create a strategy, activate it, and watch it queue until its entry time.
 
+The architecture, the product decisions, and what is deliberately not enforced yet are in [docs/DESIGN.md](docs/DESIGN.md). Cursor loads the short form from `.cursor/rules/trademan.mdc`. Read the design before adding a feature.
+
 This build does not send live broker orders and does not need API keys.
 
 The same commands run on macOS and Windows. Entry times use the computer's local timezone on both.
